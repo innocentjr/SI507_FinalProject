@@ -1,6 +1,6 @@
 ### 507 F17 Final Project
 
-I will be caching and parse the list of 'Pay for Success' projects from the Nonprofit Finance Hub website. After doing so, I will used the cached information to create a database of Pay for Success Projects in the United States. I will create a couple of table, at least three: the first being a masterlist of all projects, second of general, non-financial characteristics of the projects, and third of financial characteristics of the projects.
+I will be caching and parsing the list of 'Pay for Success' projects from the Nonprofit Finance Hub website. After doing so, I will used the cached information to create a database of Pay for Success Projects in the United States. I will create a couple of table, at least three: the first being a masterlist of all projects, second of general, non-financial characteristics of the projects, and third of financial characteristics of the projects.
 
 See Link here: http://www.payforsuccess.org/projects
 
