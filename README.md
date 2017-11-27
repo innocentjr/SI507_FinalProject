@@ -6,7 +6,7 @@ See Link here: http://www.payforsuccess.org/projects
 
 ### Milestones for Final Project
 
-- Part 0: `_________`
+- Part 0: `Create Git Repository`
     - Create GIT repository for Nonprofit Finance Fund 'Pay for Success Projects Database Project'
 
 - Part 1: `Cache Data`
