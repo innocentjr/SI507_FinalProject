@@ -46,7 +46,7 @@ See Link here: http://www.payforsuccess.org/projects
         - Financing Characteristics of Project (populated with variable related to financing)
         - General characteristics of Projects (all non-financing related variables)
 
-- Part 4: `Create Test Suit` =
+- Part 4: `Create Test Suite` =
     -  Test caching
     -  Test class Definition
     -  Test Database setup and insert statements
