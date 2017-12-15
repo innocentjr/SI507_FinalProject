@@ -15,11 +15,12 @@ See Link here: http://www.payforsuccess.org/projects
     - Get from cache with BeautifulSoup:
         - The first task to is grab an intial cache of the first page of the activity map. Since the page only load 99 project, it is necessary to cache pages by their types (Project, Legislation, and Opportunity)
         - In order to grab this page, you must install Selenium web driver and especially the Chrome driver. If you do not want to download the chrome driver, please edit the code in the set_up file.
-        - This is because the websites HTML is rendered via jquery, so unless you use you DOM to hit every tag and copy an paste, you must use a driver. The problem is that if you cached with the Requests, you will not have access to the hidden objects. 
-        - With the driver install, the three initial pages will be cache and fromt eh cache Beautiful Soup objects will be created to gather the list of projects from each cache. These list will be save to threes JSON files and merged into a Master JSPN file.
+        - This is because the websites HTML is rendered via jquery, so unless you use you DOM to hit every tag and copy an paste, you must use a driver. The problem is that if you cached with the Requests, you will not have access to the hidden objects.
+        - With the driver install, the three initial pages will be cache and fromt eh cache Beautiful Soup objects will be created to gather the list of projects from each cache. These list will be save to threes JSON files and merged into a Master JSON file.
         - With this MASTER.json file (which has all the projects and their links), the web driver will open each and cache them individually. This will take some time, so make sure you free up space on your computer memory. A total fo 185 pages will be cached and saved to your folder.
         - We then create Beautiful instances of each of the html files and parse them for the revelant information
           - Much of this parsing occurs in the classes
+        - After it finished cache, it is going to assert for your username and password in order to create the database for the project
 
 - Part 2: `Class definition to store parsed objects`
     - class `PayfSuccess_Project`

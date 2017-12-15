@@ -52,61 +52,26 @@ class TestingClasses(unittest.TestCase):
 		set_me_up()
 		with open("Master.json", 'r') as f:
 			self.dictionary = json.loads(f.read())
-			f.close()
-		dic_keys = []
-		for key in self.dictionary.keys():
-		    dic_keys.append(key)
-		self.some_key = dic_keys[4]
 
-		bsObj = connect_cache(self.dictionary[self.some_key])
-		main = bsObj.find('div', {'class':"main"})
-		content = bsObj.find('div', {'class':"content"})
-		aside = bsObj.find('aside', {'class':"sidebar"})
-		teaser = main.find('div', {"class":"teasers"})
-		content_sec = main.find('div', {'class':"facts__content"})
+	def test_soup_obj(self):
+		with self.assertRaises(Exception)
+			self.bsObj = connect_cache(self.dictionary["NYC Able Project for Incarcerated Youth"])
+	def test_soup_obj(self):
+		with self.assertRaises(Exception)
+			self.main = bsObj.find('div', {'class':"main"})
 
-		self.project_instance = Project(aside, content, teaser, content_sec)
-
-
-	def test_filename_in_Dict(self):
-		try:
-		    attempt = self.dictionary[self.some_key]["filename"]
-		except:
-		    counter = 0
-		    for each in self.dictionary:
-		        self.dictionary[each]["filename"] = "project{}.html".format(counter)
-		        counter += 1
-		obj = connect_cache(self.dictionary[self.some_key])
-		self.assertTrue(type(obj), "<class 'bs4.BeautifulSoup'>")
-
-	def test_return_BSObj(self):
-		try:
-		    attempt = self.dictionary[self.some_key]["filename"]
-		except:
-		    counter = 0
-		    for each in self.dictionary:
-		        self.dictionary[each]["filename"] = "project{}.html".format(counter)
-		        counter += 1
-
-		obj = connect_cache(self.dictionary[self.some_key])
-		self.assertTrue(type(obj), "<class 'bs4.BeautifulSoup'>")
+	def test_soup_obj(self):
+		with self.assertRaises(Exception)
+			self.content = bsObj.find('div', {'class':"content"})
+	def test_soup_obj(self):
+		with self.assertRaises(Exception)
+			self.aside = bsObj.find('aside', {'class':"sidebar"})
+	def test_soup_obj(self):
+		with self.assertRaises(Exception)
+		self.teaser = main.find('div', {"class":"teasers"})
 
 	def test_project_Instance(self):
-		try:
-		    attempt = self.dictionary[self.some_key]["filename"]
-		except:
-		    counter = 0
-		    for each in self.dictionary:
-		        self.dictionary[each]["filename"] = "project{}.html".format(counter)
-		        counter += 1
-		bsObj = connect_cache(self.dictionary[self.some_key])
-		main = bsObj.find('div', {'class':"main"})
-		content = bsObj.find('div', {'class':"content"})
-		aside = bsObj.find('aside', {'class':"sidebar"})
-		teaser = main.find('div', {"class":"teasers"})
-		content_sec = main.find('div', {'class':"facts__content"})
-
-		projectw = Project(aside, content, teaser, content_sec)
+		projectw = Project(self.aside, self.content, self.teaser, self.content_sec)
 		project = sendInstances()
 		self.assertEqual(type(project[0]), type(projectw))
 
