@@ -54,21 +54,21 @@ class TestingClasses(unittest.TestCase):
 			self.dictionary = json.loads(f.read())
 
 	def test_soup_obj(self):
-		with self.assertRaises(Exception)
+		with self.assertRaises(Exception):
 			self.bsObj = connect_cache(self.dictionary["NYC Able Project for Incarcerated Youth"])
 	def test_soup_obj(self):
-		with self.assertRaises(Exception)
+		with self.assertRaises(Exception):
 			self.main = bsObj.find('div', {'class':"main"})
 
 	def test_soup_obj(self):
-		with self.assertRaises(Exception)
+		with self.assertRaises(Exception):
 			self.content = bsObj.find('div', {'class':"content"})
 	def test_soup_obj(self):
-		with self.assertRaises(Exception)
+		with self.assertRaises(Exception):
 			self.aside = bsObj.find('aside', {'class':"sidebar"})
 	def test_soup_obj(self):
-		with self.assertRaises(Exception)
-		self.teaser = main.find('div', {"class":"teasers"})
+		with self.assertRaises(Exception):
+			self.teaser = main.find('div', {"class":"teasers"})
 
 	def test_project_Instance(self):
 		projectw = Project(self.aside, self.content, self.teaser, self.content_sec)
