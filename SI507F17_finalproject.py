@@ -2,7 +2,7 @@ from set_up import *
 from class_def import *
 import copy
 from states_abr import *
-from db_execute import *
+from db_setup import *
 from time import sleep # this should go at the top of the file
 from selenium import webdriver
 from urllib.request import urlopen
