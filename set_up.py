@@ -13,7 +13,7 @@ base_url3 = 'http://www.payforsuccess.org/activity/?facets%5B0%5D=activity_type%
 
 def grabPage(base_url, filename, indicator):
     driver = webdriver.Chrome()
-    driver.get(base_url)##;
+    driver.get(base_url);
     html = driver.page_source
 
     bsObj = BeautifulSoup(html, "html.parser")

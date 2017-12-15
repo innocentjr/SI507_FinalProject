@@ -1,7 +1,7 @@
 import unittest
 import json
 from set_up import *
-from SI507_FinalProject import *
+from SI507F17_finalproject import *
 
 ###########
 class TestingSetup(unittest.TestCase):
@@ -140,7 +140,7 @@ class TestingClasses(unittest.TestCase):
 
 class TestingFilesExist(unittest.TestCase):
 
-		def setUp(self):
+	def setUp(self):
 		self.master = open("Master.json")
 		self.project = open("Project.json")
 		self.legislation = open("Legislation.json")
@@ -169,7 +169,7 @@ class TestingFilesExist(unittest.TestCase):
 		with self.assertRaises(Exception):
 			base_url = 'http://www.payforsuccess.org/activity/?facets%5B0%5D=activity_type%3Aproject&sort=recent'
 			driver = webdriver.Chrome()
-		    driver.get(base_url)
+			driver.get(base_url);
 			html = driver.page_source
 			driver.quit()
 
