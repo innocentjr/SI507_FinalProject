@@ -11,6 +11,7 @@ import psycopg2.extras
 conn, cur = None, None
 db_name = "payforsuccessprojects"
 # Write code / functions to set up database connection and cursor here.
+#comment
 
 def get_connection_and_cursor():
     global conn, cur, db_name
