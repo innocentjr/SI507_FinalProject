@@ -120,6 +120,8 @@ function mouseover(d){
 	bp.mouseover(d);
 	bp2.mouseover(d);	
 	g.selectAll(".mainBars")
+	.select(".perc")
+	.text(function(d){ return d3.format("0.0%")(d.percent)})
 	g2.selectAll(".mainBars")
 	.select(".perc")
 	.text(function(d){ return d3.format("0.0%")(d.percent)})
