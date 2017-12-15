@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+.mainBars rect{
+  shape-rendering: auto;
+  fill-opacity: 0;
+  word-wrap: break-word;
+  stroke-width: 0.5px;
+  stroke: rgb(0, 0, 0);
+  stroke-opacity: 0;
+}
+.subBars{
+	shape-rendering:crispEdges;
+}
+.edges{
+	stroke:none;
+	fill-opacity:0.5;
+}
+.header{
+	text-anchor:middle;
+	font-size:20px;
+	font-family:"Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif";
+	fill: #404040;
+}
+.perc{
+	text-anchor:middle;
+	font-size:9px;
+	font-family:"Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif";
+	word-wrap: break-word
+}
+.label{
+	font-size:9px;
+	width:6px;
+	font-family:"Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif";
+	word-wrap: break-word
+}
+</style>
+<body>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="http://vizjs.org/viz.v1.1.0.min.js"></script>
+<script>
+
+var data2= {{ data2|tojson|safe }};
+	
+var data= {{ data1|tojson|safe }};
+	
+	
+var color ={"Mental Health":"#3366CC", "Child Welfare":"#DC3912",  "Environment":"#FF9900", "Criminal Justice":"#109618", "Workforce":"#990099", "Early Childhood":"#0099C6", "Homelessness":"#3B8B8C", "Recidivism":"#079B00", "Education":"#3366FF" , "Environment":"#0FF099", "Health":"#A99618", "Maternal and Child Health":"#FD99A0", "City":"#F85756" , "County": "#28CAC8", "State": "#DB3058", "Multiple": "#FDE545" };
+
+var svg = d3.select("body").append("svg").attr("width", 960).attr("height", 800);
+var g = svg.append("g").attr("transform","translate(150,100)");
+var g2 = svg.append("g").attr("transform","translate(650,100)");
+	
+svg.append("text").attr("x",250).attr("y",70)
+	.attr("class","header").text("Issue Area by Level");
+	
+svg.append("text").attr("x",750).attr("y",70)
+	.attr("class","header").text("Issue Area by State");
+
+var bp=viz.bP()
+		.data(data)
+		.min(20)
+		.pad(1)
+		.height(600)
+		.width(200)
+		.barSize(35)
+		.fill(d=>color[d.primary]);
+	
+var bp2=viz.bP()
+		.data(data2)
+		.min(12)
+		.pad(1)
+		.height(600)
+		.width(200)
+		.barSize(35)
+		.fill(d=>color[d.primary]);
+
+function macroCallBack (str) {
+        obj = JSON.parse(str)
+
+        for (var i=0; i<obj.length; i++) {
+            console.log(obj[i]);
+        }
+}			
+g.call(bp);
+g2.call(bp2);
+
+g.selectAll(".mainBars")
+	.on("mouseover",mouseover)
+	.on("mouseout",mouseout)
+
+g2.selectAll(".mainBars")
+	.on("mouseover",mouseover)
+	.on("mouseout",mouseout)
+
+g.selectAll(".mainBars").append("text").attr("class","label")
+	.attr("x",d=>(d.part=="primary"? -40: 30))
+	.attr("y",d=>+6)
+	.text(d=>d.key)
+	.attr("text-anchor",d=>(d.part=="primary"? "end": "start"));
+g2.selectAll(".mainBars").append("text").attr("class","label")
+	.attr("x",d=>(d.part=="primary"? -40: 30))
+	.attr("y",d=>+6)
+	.text(d=>d.key)
+	.attr("text-anchor",d=>(d.part=="primary"? "end": "start"));
+	
+g.selectAll(".mainBars").append("text").attr("class","perc")
+	.attr("x",d=>(d.part=="primary"? -30: 70))
+	.attr("y",d=>+6)
+	.text(function(d){ return d3.format("0.0%")(d.percent)})
+	.attr("text-anchor",d=>(d.part=="primary"? "end": "start"));
+
+g2.selectAll(".mainBars").append("text").attr("class","perc")
+	.attr("x",d=>(d.part=="primary"? -30: 70))
+	.attr("y",d=>+6)
+	.text(function(d){ return d3.format("0.0%")(d.percent)})
+	.attr("text-anchor",d=>(d.part=="primary"? "end": "start"));
+
+function mouseover(d){
+	bp.mouseover(d);
+	bp2.mouseover(d);	
+	g.selectAll(".mainBars")
+	g2.selectAll(".mainBars")
+	.select(".perc")
+	.text(function(d){ return d3.format("0.0%")(d.percent)})
+}
+function mouseout(d){
+	bp.mouseout(d);
+	g.selectAll(".mainBars")
+	bp2.mouseout(d);
+	g2.selectAll(".mainBars")
+		.select(".perc")
+	.text(function(d){ return d3.format("0.0%")(d.percent)})
+}
+d3.select(self.frameElement).style("height", "800px");
+</script>
